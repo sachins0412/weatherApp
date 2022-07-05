@@ -1,11 +1,7 @@
 const request = require("request");
-
+const { weatherstack_key } = require("./../enums/Access_Keys");
 const forecast = (latitude, longitude, callback) => {
-  const url =
-    "http://api.weatherstack.com/current?access_key=5abee9a2c6dcee61c4fa6364f5cf88a5&query=" +
-    latitude +
-    "," +
-    longitude;
+  const url = `http://api.weatherstack.com/current?access_key=${weatherstack_key}&query=${latitude},${longitude}`;
 
   request({ url, json: true }, (error, { body }) => {
     if (error) {
